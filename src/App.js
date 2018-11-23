@@ -7,41 +7,38 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Text, View, SafeAreaView, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  box: {
+    height: 40,
+    width: 40,
   },
 });
 
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev men a`,
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-});
-
-type Props = {};
-export default class App extends Component<Props> {
-  state = {};
-
+export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Hello asdf</Text>
-      </View>
+      <SafeAreaView
+        style={{
+          backgroundColor: 'red',
+          flex: 1,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexDirection: 'row',
+          paddingHorizontal: 10,
+        }}
+      >
+        <View style={[styles.box, { backgroundColor: 'yellow' }]}>
+          <Text>1</Text>
+        </View>
+        <View style={[styles.box, { backgroundColor: 'green' }]}>
+          <Text>2</Text>
+        </View>
+        <View style={[styles.box, { backgroundColor: 'blue' }]}>
+          <Text>3</Text>
+        </View>
+      </SafeAreaView>
     );
   }
 }
