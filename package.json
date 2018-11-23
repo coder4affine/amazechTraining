@@ -16,6 +16,17 @@
     "flow-status": "flow status",
     "flow-coverage": "flow coverage"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(js|jsx)": [
+      "npm run lint:write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "react": "16.6.1",
     "react-native": "0.57.5"
@@ -46,16 +57,5 @@
   },
   "jest": {
     "preset": "react-native"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.(js|jsx)": [
-      "npm run lint:write",
-      "git add"
-    ]
   }
 }
