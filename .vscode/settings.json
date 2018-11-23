@@ -1,0 +1,6 @@
+{
+  "editor.formatOnSave": false,
+  "eslint.autoFixOnSave": true,
+  "editor.snippetSuggestions": "top",
+  "cSpell.words": ["Formik", "dropdown", "reduxify"]
+}
