@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
-import { string, object, ref } from 'yup';
+import { string, object } from 'yup';
 
 import TextInput from '../../components/TextInput/textInput';
 import Button from '../../components/Button/button';
@@ -16,9 +16,6 @@ const signInForm = ({ initialValues, onSubmit }) => (
         .min(6, 'Min 6 character require')
         .max(20, 'Max 20 character require')
         .required('Password is required'),
-      confirmPassword: string()
-        .oneOf([ref('password', null)], 'Confirm Password must matched Password')
-        .required('Confirm Password is required'),
     })}
     render={({
       values,
@@ -31,7 +28,6 @@ const signInForm = ({ initialValues, onSubmit }) => (
       isSubmitting,
     }) => {
       let password;
-      let confirmPassword;
       return (
         <Fragment>
           <TextInput
@@ -59,24 +55,10 @@ const signInForm = ({ initialValues, onSubmit }) => (
             onTouch={setFieldTouched}
             name="password"
             error={touched.password && errors.password}
-            returnKeyType="next"
-            onSubmitEditing={() => confirmPassword.focus()}
-          />
-          <TextInput
-            label="Confirm Password"
-            inputRef={inputRef => {
-              confirmPassword = inputRef;
-            }}
-            autoCapitalize="none"
-            secureTextEntry
-            value={values.confirmPassword}
-            onChange={setFieldValue}
-            onTouch={setFieldTouched}
-            name="confirmPassword"
-            error={touched.confirmPassword && errors.confirmPassword}
             returnKeyType="done"
             onSubmitEditing={handleSubmit}
           />
+
           <Button
             title="Submit"
             onPress={handleSubmit}

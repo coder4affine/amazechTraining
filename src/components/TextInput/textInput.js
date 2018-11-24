@@ -14,6 +14,8 @@ export class textInput extends PureComponent {
     inputRef: () => {},
   };
 
+  static height = 10;
+
   test = () => {
     alert('test');
   };

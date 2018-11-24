@@ -1,16 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import SignIn from './screens/SignIn/signIn';
+import Main from './navigation';
 
-const App = () => (
-  <SafeAreaView
-    style={{
-      flex: 1,
-      margin: 20,
-    }}
-  >
-    <SignIn />
-  </SafeAreaView>
-);
+const App = () => <Main />;
 
 export default App;
