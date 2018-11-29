@@ -1,7 +1,28 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native';
-import Main from './navigation';
+import React, { Component } from 'react';
+import { Provider, connect } from 'react-redux';
+import {
+  reduxifyNavigator,
+  createReactNavigationReduxMiddleware,
+} from 'react-navigation-redux-helpers';
+import configureStore from './configureStore';
+import Navigator from './navigation';
 
-const App = () => <Main />;
+const middleware = createReactNavigationReduxMiddleware('root', state => state.nav);
 
-export default App;
+const Root = reduxifyNavigator(Navigator, 'root');
+const mapStateToProps = state => ({
+  state: state.nav,
+});
+const AppWithNavigationState = connect(mapStateToProps)(Root);
+
+const store = configureStore(middleware);
+
+export default class App extends Component<Props> {
+  render() {
+    return (
+      <Provider store={store}>
+        <AppWithNavigationState />
+      </Provider>
+    );
+  }
+}

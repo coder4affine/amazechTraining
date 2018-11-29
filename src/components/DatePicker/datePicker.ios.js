@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
 import {
-  Text,
   View,
   TouchableWithoutFeedback,
   Modal,
